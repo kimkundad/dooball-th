@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%9A%E0%B8%AD%E0%B8%A5%E0%B9%84%E0%B8%AB%E0%B8%A5
+Disallow: /admin
+
+Sitemap: https://dooball-th.com/sitemap.xml

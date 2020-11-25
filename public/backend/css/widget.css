@@ -1,0 +1,121 @@
+.auto-scroll {
+  min-height: 400px;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+.panel {
+  border-top: 0;
+}
+.panel>.panel-heading {
+  color: #fff;
+}
+
+/* start colorful panel */
+.panel-purple {
+  border: 1px solid #852b99;
+}
+.panel-purple>.panel-heading {
+  background-color: #852b99;
+  border-color: #852b99;
+}
+.panel-yellow {
+  border: 1px solid #ffd333
+}
+.panel-yellow>.panel-heading {
+  background-color: #ffd333;
+  border-color: #ffd333;
+}
+.panel-green {
+  border: 1px solid #35aa47
+}
+.panel-green>.panel-heading {
+  background-color: #35aa47;
+  border-color: #35aa47;
+}
+.panel-red {
+  border: 1px solid #e02b2b;
+}
+.panel-red>.panel-heading {
+  background-color: #e02b2b;
+  border-color: #e02b2b;
+}
+.panel-orange {
+  border: 1px solid #ffb848;
+}
+.panel-orange>.panel-heading {
+  background-color: #ffb848;
+  border-color: #ffb848;
+}
+.panel-brown {
+  border: 1px solid #ca9a4c;
+}
+.panel-brown>.panel-heading {
+  background-color: #ca9a4c;
+  border-color: #ca9a4c;
+}
+.panel-red-black {
+  border: 1px solid #923939;
+}
+.panel-red-black>.panel-heading {
+  background-color: #923939;
+  border-color: #923939;
+}
+/* end colorful panel */
+
+.panel-body {
+  padding: 15px 0px;
+}
+.panel-body.static-portlet .actions {
+  visibility: hidden;
+}
+.widget-item {
+  width: 100% !important;
+  cursor: move !important;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left: 10px;
+  border: 1px solid black;
+  background: white;
+}
+.widget-item.portlet {
+  cursor: default;
+  padding-bottom: 1px;
+  margin-bottom: 10px;
+}
+.portlet.solid {
+  padding: 10px;
+}
+.portlet > .portlet-body.blue,
+.portlet.blue {
+  background-color: #4b8df8 !important;
+}
+.portlet {
+  clear: both;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  padding: 0px;
+}
+.portlet > .portlet-title > .actions > .btn.btn-sm {
+  padding: 5px 8px;
+  margin-top: 0px;
+  border-radius: 0px;
+}
+.widget-item.portlet.solid > .portlet-title {
+  position: relative;
+}
+.widget-item.portlet > .portlet-title > .tools,
+.widget-item.portlet > .portlet-title > .actions {
+  margin-top: 0px;
+  position: absolute;
+  right: 0;
+  top: -2px;
+}
+.widget-item.portlet .fa.fa-eye {
+  color: green;
+}
+.portlet.blue > .portlet-title > .caption {
+  color: #fff;
+}
+.sortable {
+  min-height: 52px;
+}

@@ -1,0 +1,64 @@
+body {
+  font-family: Tahoma;
+}
+
+.ffp-outmost {
+  width: 100%;
+  min-height: 300px;
+  margin: 0 auto;
+}
+
+table {
+  font-size: 80%;
+  background: white;
+}
+
+thead > tr {
+  color: white;
+  background-color: #d21d29 !important;
+}
+
+thead > tr > th {
+  text-align: left;
+  padding: 8px 5px !important;
+}
+th.price {
+  width: 12%;
+}
+
+tr.live-market,
+tr.non-live-market {
+  color: white;
+  font-weight: bold;
+}
+
+tr.live-market {
+  background-color: #a95840 !important;
+}
+
+tr.market-league {
+  color: #782803;
+  background-color: #e7bab1 !important;
+}
+
+tr.non-live-market {
+  background: #627fbf;
+}
+
+tr.nl-market-league {
+  color: #383564;
+  background-color: #b2d1ff !important;
+}
+
+th.tb-time {
+  width: 14%;
+}
+th.tb-team {
+  width: 30%;
+}
+th.tb-result {
+  width: 20%;
+}
+th.tb-action {
+  width: 6%;
+}

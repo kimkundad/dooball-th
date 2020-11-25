@@ -1,0 +1,53 @@
+.d-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.df-row {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.df-wrap {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.df-col {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.alit-start {
+  -webkit-align-items: flex-start !important;
+  align-items: flex-start !important;
+}
+.alit-end {
+  -webkit-align-items: flex-end !important;
+  align-items: flex-end !important;
+}
+.alit-center {
+  -webkit-align-items: center !important;
+  align-items: center !important;
+}
+.just-center {
+  -webkit-justify-content: center !important;
+  justify-content: center !important;
+}
+.just-start {
+  -webkit-justify-content: flex-start !important;
+  justify-content: flex-start !important;
+}
+.just-end {
+  -webkit-justify-content: flex-end !important;
+  justify-content: flex-end !important;
+}
+.just-between {
+  -webkit-justify-content: space-between !important;
+  justify-content: space-between !important;
+}
+.just-around {
+  -webkit-justify-content: space-around !important;
+  justify-content: space-around !important;
+}

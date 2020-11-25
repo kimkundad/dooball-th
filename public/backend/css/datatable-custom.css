@@ -1,0 +1,84 @@
+table {
+	width: 100% !important;
+}
+table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
+  background-color: #f3f3f3;
+}
+.table>tbody>tr>td {
+    padding: 0px 5px;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+table.dataTable>thead>tr>th {
+	background-color: #4d0373 !important;
+	color: #FFFFFF;
+}
+table.dataTable thead .sorting:after
+, table.dataTable thead .sorting_asc:after
+, table.dataTable thead .sorting_desc:after
+, table.dataTable thead .sorting_asc_disabled:after
+, table.dataTable thead .sorting_desc_disabled:after {
+	font-weight: normal;
+}
+table.dataTable thead .sorting_asc:after
+, table.dataTable thead .sorting_desc:after {
+	opacity: 0.9;
+}
+table.dataTable thead .sorting:after {
+	color: #f5f5f5;
+}
+table>tbody>tr>td>span {
+	padding: 3px;
+}
+table>tbody>tr>td>span.status-active
+,table>tbody>tr>td>span.status-nonactive
+,table>tbody>tr>td>span.status-open
+,table>tbody>tr>td>span.status-accepted
+,table>tbody>tr>td>span.status-closed {
+	color: #FFFFFF !important;
+}
+table>tbody>tr>td.status-active
+,table>tbody>tr>td.status-nonactive
+,table>tbody>tr>td.status-open
+,table>tbody>tr>td.status-accepted
+,table>tbody>tr>td.status-closed {
+	color: #FFFFFF !important;
+}
+td.status-active
+, td>span.status-active {
+	background-color: #0fa07f !important;
+}
+td.status-nonactive
+, td>span.status-nonactive {
+	background-color: #d20d07 !important;
+}
+td.status-open
+, td>span.status-open {
+	background-color: #AAAAAA !important;
+}
+td.status-closed
+, td>span.status-closed {
+	background-color: #337ab7 !important;
+}
+table>tbody>tr>td.status-accepted {
+	background-color: #F1C40F !important;
+}
+td>.btn.btn-primary
+, td>.btn.btn-info
+, td>.btn.btn-warning {
+	margin-right: 1px;
+}
+td.td-left {
+	text-align: right;
+}
+.btn-circle.btn-lg {
+    width: 40px;
+    height: 40px;
+    padding: 7px 12px;
+}
+.btn-circle.btn-lg.custom {
+	padding: 7px 9px;
+}
+.content-link {
+	width: 275px;
+}

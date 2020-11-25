@@ -1,0 +1,268 @@
+.main-header .navbar {
+  background-color: #212121 !important;
+}
+.main-header .navbar .nav > li > a {
+  color: #fff;
+}
+.main-header .navbar .nav > li > a:hover,
+.main-header .navbar .nav > li > a:active,
+.main-header .navbar .nav > li > a:focus,
+.main-header .navbar .nav .open > a,
+.main-header .navbar .nav .open > a:hover,
+.main-header .navbar .nav .open > a:focus,
+.main-header .navbar .nav > .active > a {
+  background: rgba(0, 0, 0, 0.1);
+  color: #f6f6f6;
+}
+.main-header .navbar .sidebar-toggle {
+  color: #fff;
+}
+.main-header .navbar .sidebar-toggle:hover {
+  color: #f6f6f6;
+  background: rgba(0, 0, 0, 0.1);
+}
+.main-header .navbar .sidebar-toggle {
+  color: #fff;
+}
+.main-header .navbar .sidebar-toggle:hover {
+  background-color: #e02222;
+}
+@media (max-width: 767px) {
+  .main-header .navbar .dropdown-menu li.divider {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .main-header .navbar .dropdown-menu li a {
+    color: #fff;
+  }
+  .main-header .navbar .dropdown-menu li a:hover {
+    background: #e02222;
+  }
+}
+.main-header .logo {
+  background-color: #e02222;
+  color: #fff;
+  border-bottom: 0 solid transparent;
+}
+.main-header .logo:hover {
+  background-color: #e02222;
+}
+.main-header li.user-header {
+  background-color: #212121;
+}
+.content-header {
+  background: transparent;
+}
+.wrapper,
+.main-sidebar,
+.left-side {
+  background-color: #3d3d3d;
+}
+.user-panel > .info,
+.user-panel > .info > a {
+  color: #fff;
+}
+.sidebar-menu > li.header {
+  color: #4b646f;
+  background: #1a2226;
+}
+.sidebar-menu > li > a {
+  border-left: 3px solid transparent;
+}
+.sidebar-menu > li:hover > a,
+.sidebar-menu > li.active > a,
+.sidebar-menu > li.menu-open > a {
+  color: #fff;
+}
+.sidebar-menu > li:hover > a,
+.sidebar-menu > li.menu-open > a {
+  background: #303030;
+}
+.sidebar-menu > li.active > a {
+  background: #e02222 !important;
+}
+.sidebar-menu > li.active > a {
+  border-left-color: #fff;
+}
+.sidebar-menu > li > .treeview-menu {
+  margin: 0 1px;
+  background: #2c3b41;
+}
+.sidebar a {
+  color: #b8c7ce;
+}
+.sidebar a:hover {
+  text-decoration: none;
+}
+.sidebar-menu .treeview-menu > li {
+  margin-top: 1px !important;
+}
+.sidebar-menu .treeview-menu > li:hover {
+  background: #575757 !important;
+}
+.sidebar-menu .treeview-menu > li > a {
+  color: #8aa4af;
+}
+.sidebar-menu .treeview-menu > li.active > a,
+.sidebar-menu .treeview-menu > li > a:hover {
+  color: #fff;
+}
+.sidebar-form {
+  border-radius: 3px;
+  border: 1px solid #374850;
+  margin: 10px 10px;
+}
+.sidebar-form input[type="text"],
+.sidebar-form .btn {
+  box-shadow: none;
+  background-color: #374850;
+  border: 1px solid transparent;
+  height: 35px;
+}
+.sidebar-form input[type="text"] {
+  color: #666;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+}
+.sidebar-form input[type="text"]:focus,
+.sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  background-color: #fff;
+  color: #666;
+}
+.sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  border-left-color: #fff;
+}
+.sidebar-form .btn {
+  color: #999;
+  border-top-left-radius: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+.skin-blue.layout-top-nav .main-header > .logo {
+  background-color: #212121;
+  color: #fff;
+  border-bottom: 0 solid transparent;
+}
+.skin-blue.layout-top-nav .main-header > .logo:hover {
+  background-color: #e02222;
+}
+
+.dooball-breadcrumb {
+  list-style: none;
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.dooball-breadcrumb li {
+  float: left;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+.dooball-breadcrumb li a:before,
+.dooball-breadcrumb li a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  border: 0 solid #ffffff;
+  border-width: 20px 10px;
+  width: 0;
+  height: 0;
+}
+/*----- first style ------*/
+.dooball-breadcrumb li:first-child a {
+  padding-left: 15px;
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 0 0 4px;
+  background-color: #212121;
+}
+.dooball-breadcrumb li:first-child a:before {
+  border: none;
+}
+.dooball-breadcrumb li:first-child a:after {
+  border-left-color: #212121;
+}
+.dooball-breadcrumb li:first-child a:hover {
+  background-color: #e02222;
+}
+.dooball-breadcrumb li:first-child a:hover:before {
+  border-color: #e02222;
+  border-left-color: transparent;
+}
+.dooball-breadcrumb li:first-child a:hover:after {
+  border-left-color: #e02222;
+}
+/*----- first style ------*/
+
+/*----- normal style -------*/
+.dooball-breadcrumb li a {
+  color: #fff;
+  display: block;
+  background: #212121;
+  text-decoration: none;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px 0 5px;
+  text-align: center;
+  margin-right: 23px;
+}
+.dooball-breadcrumb li a:before {
+  left: -20px;
+  border-color: #212121;
+  border-left-color: transparent;
+}
+.dooball-breadcrumb li a:after {
+  left: 100%;
+  border-color: transparent;
+  border-left-color: #212121;
+}
+.dooball-breadcrumb li a:hover {
+  background-color: #e02222;
+}
+.dooball-breadcrumb li a:hover:before {
+  border-color: #e02222;
+  border-left-color: transparent;
+}
+.dooball-breadcrumb li a:hover:after {
+  border-left-color: #e02222;
+}
+/*----- normal style -------*/
+
+/*----- last style -------*/
+.dooball-breadcrumb li:last-child a {
+  padding-right: 15px;
+  -moz-border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 4px 4px 0;
+  background-color: #bbbbbb;
+  color: #586469;
+  font-weight: bold;
+  text-shadow: 0px 1px 2px #eee;
+}
+.dooball-breadcrumb li:last-child a:after {
+  border-left-color: #bbbbbb;
+}
+.dooball-breadcrumb li:last-child a:before {
+  border-color: #bbbbbb;
+  border-left-color: transparent;
+}
+.dooball-breadcrumb li:last-child a:after {
+  border: none;
+}
+.dooball-breadcrumb li:last-child a:hover {
+  background-color: #bbbbbb;
+}
+.dooball-breadcrumb li:last-child a:hover:before {
+  border-color: #bbbbbb;
+  border-left-color: transparent;
+}
+.dooball-breadcrumb li:last-child a:hover:after {
+  border-left-color: #bbbbbb;
+}
+/*----- last style -------*/
