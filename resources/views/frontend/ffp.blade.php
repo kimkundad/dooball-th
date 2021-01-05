@@ -119,7 +119,7 @@
             const params = {
                 'ip': ip
             };
- 
+
             $.ajax({
                 url: apiHost + '/api/ffp',
                 type: 'POST',
@@ -131,9 +131,9 @@
                     if (response.latest_dir) {
                         // var text = 'ข้อมูล ณ เวลา: ' + response.latest_dir;
                         $('#title_data').html('');
-                        if (response.final_list) {
-                            arrangeContent(response.final_list);
-                            saveToTemp(response.latest_dir, response.final_list);
+                        if (response.raw_group) {
+                            arrangeContent(response.raw_group);
+                          //  saveToTemp(response.latest_dir, response.final_list);
                         }
                     } else {
                         $('#title_data').html('');
@@ -149,114 +149,164 @@
             });
         }
 
-        function arrangeContent(finalList) {
-            if (finalList.length > 0) {
-                var html = '';
-                for (var k = 0; k < finalList.length; k++) {
-                    var leagueName = finalList[k].league_name;
-                    var matchDatas = finalList[k].match_datas;
+        function arrangeContent(rawGroup, domain) {
+            if (rawGroup) {
+                console.log(rawGroup);
+                if (rawGroup.length > 0) {
+                    var firstLink = '';
+                    var html = '';
+                    var c = 0;
+                    c = rawGroup.length;
+                    //console.log(c);
+                    var arr = [];
+                    for(var i = 0; i < c; i++) {
+                        var row = rawGroup[i];
+                        var rowDatas = row;
+                        //arr.push(row.datas);
+                       // console.log(row.datas[i].match_datas);
+                       // var link = row.link;
 
-                    if (matchDatas.length > 0) {
-                        html += '<tr class="league-name">';
-                        html +=     '<td colspan="7">' + leagueName + '</td>';
-                        html += '</tr>';
+                        var d = 0;
+                        var d = row.datas.length;
 
-                        for (var l = 0; l < matchDatas.length; l++) {
-                            var data = matchDatas[l];
-                            var detailId = data.detail_id;
-                            var teamClass = 'team-' + k +'-' + l;
-                            var homeTeam = data.left[0];
-                            var awayTeam = data.right[0];
-                            var findHomeMinus = 0;
-                            var homeRed = '';
-                            var awayRed = '';
-                            
-                            if (data.left_list.length) {
-                                for (var m = 0; m < data.left_list.length; m++) {
-                                    var inner = data.left_list[m];
+                       // console.log(row.datas.length);
+                       var f = 0;
+                        for (var j = 0; j < d; j++) {
 
-                                    if (inner[2]) {
-                                        var strMid = inner[1];
-                                        var n = strMid.indexOf('-');
+                            var data = row.datas[j];
+                            var link = data.match_datas[0].link;
 
-                                        if (n != -1) {
-                                            findHomeMinus++;
-                                        }
-                                    }
-                                }
+                            if(i == 0){
+
+                           // console.log(data.match_datas.length);
+
+                            if( j == 0){
+                                html += '<tr class="db-collapse">';
+                                html += '<td colspan=5>';
+                                html += '<span><b>' + row.top_head + '</b></span>';
+                                html += '</td>';
+                                html += '</tr>';
                             }
 
-                            homeRed = (findHomeMinus > 0) ? 'text-danger' : '';
-                            awayRed = (findHomeMinus == 0) ? 'text-danger' : '';
+                            var k = 0;
+                            kk = data.match_datas.length;
 
                             html += '<tr class="db-collapse">';
+                                html += '<td colspan=5>';
+                                html += '<span><b>' + data.league_name + '</b></span>';
+                                html += '</td>';
+                                html += '</tr>';
+
+                            for (var k = 0; k < kk; k++) {
+
+                            var data2 = data.match_datas[k];
+
+
+                            html += '<tr class="db-collapse">'; // db-match
                             html +=         '<td>';
                             html +=             '<div class="match-time d-flex just-between">';
-                            html +=                 '<span>' + ((data.date_time_before) ? data.date_time_before : '') + '</span>';
+                            html +=                 '<span>' + data2.time + '</span>';
                             html +=             '</div>';
                             html +=         '</td>';
                             html +=         '<td>';
-                            html +=             '<div class="ha-team ffp ' + teamClass + ' ' + homeRed + '">' + homeTeam + '</div>';
+                            html +=             '<div class="match-time d-flex just-between">';
+                            html +=                 '<span>' + data2.left[0] +' <b>(' + data2.left[1] +')</b></span>';
+                            html +=             '</div>';
                             html +=         '</td>';
                             html +=         '<td>';
-
-                            if (data.left_list.length) {
-                                for (var m = 0; m < data.left_list.length; m++) {
-                                    var inner = data.left_list[m];
-
-                                    html +=             '<div class="d-flex alit-center just-between narrow-in-mb">';
-                                    html +=                 '<div>';
-                                    html +=                     ((inner[2]) ? inner[1] : '<span class="text-bold">(แพ้/ชนะ)</span>');
-                                    html +=                 '</div>';
-                                    html +=                 '<div>' + ((inner[2]) ? '@' + inner[2] : '@' + inner[1]) + '</div>';  
-                                    html +=             '</div>';
+                            html +=             'เสมอ <b> ' + data2.mid[1] + '</b>';
+                            html +=         '</td>';
+                            html +=         '<td>';
+                            html +=             '<div class="match-time d-flex just-between">';
+                            html +=                 '<span>' + data2.right[0] +' <b>(' + data2.right[1] +')</b></span>';
+                            html +=             '</div>';
+                            html +=         '</td>';
+                                html +=         '<td class="row-span" ';
+                                html +=             '<div class="league-name">';
+                                if (link) {
+                                    html +=             '<a href="{{ url('/ราคาบอลไหล?link=') }}'+ link +'" target="_BLANK">ดูราคา<br>บอลไหล</a>';
                                 }
-                            }
-
-                            var water = (data.datas.asian.water) ? data.datas.asian.water : 0;
-                            var lastWater = (data.datas.asian.last_water) ? data.datas.asian.last_water : 0;
-
-                            var diff = water - lastWater;
-                            var sbdDiff = Math.abs(diff);
-                            var divideWater = water - 1;
-                            var percentDiff = 0;
-
-                            if (divideWater != 0) {
-                                percentDiff = (diff * 100 ) / divideWater;
-                            }
-
-                            console.log(percentDiff);
-
-                            html +=         '</td>';
-                            html +=        '<td class="not-mb">';
-                            html +=             '<div class="vs d-flex just-center">Vs</div>';
-                            html +=         '</td>';
-                            html +=         '<td>';
-                            html +=             '<div class="ha-team ffp ' + teamClass + ' ' + awayRed + '">' + awayTeam + '</div>';
-                            html +=         '</td>';
-                            html +=         '<td><span class="' + percentColor(parseInt(percentDiff)) + ' text-bold">' + percentFormat(percentDiff) + '%</span></td>';
-                            // html +=         '<td>';
-                            // html +=             (type == '1X2') ? '<span class="text-bold">(แพ้/ชนะ)</span>' : data.right[1];
-                            // html +=         '</td>';
-                            // html +=         '<td>';
-                            // html +=             (type == '1X2') ? data.right[1] : data.right[2];
-                            // html +=         '</td>';
-
-                            html +=         '<td>'; //  class="row-span" rowspan="' + data.left_list.length + '"
-                            html +=             '<div class="box-btn-link">';
-                            if (detailId) {
-                                var link = thisHost + '/ราคาบอลไหล?link=' + detailId;
-                                html +=             '<a href="' + link + '" class="btn btn-block active-gd no-round text-white" target="_BLANK">ดูราคา<br>บอลไหล</a>';
-                            }
-                            html +=             '</div>';
-                            html +=         '</td>';
-
+                                html +=             '</div>';
+                                html +=         '</td>';
                             html += '</tr>';
+                            }
+
+                            }else{
+
+                                var kk = 0;
+                                kk = data.match_datas.length;
+
+                                if(f === 0){
+                                    html += '<tr class="db-collapse">';
+                                    html += '<td colspan=5>';
+                                    html += '<span><b>' + row.top_head + '</b></span>';
+                                    html += '</td>';
+                                    html += '</tr>';
+                                }
+
+                            ////////////////////////////////
+
+                                html += '<tr>';
+                                html += '<td colspan=5>';
+                                html += '<span><b>' + data.league_name + '</b></span>';
+                                html += '</td>';
+                                html += '</tr>';
+
+
+                                for (var k = 0; k < kk; k++) {
+                                var data2 = data.match_datas[k];
+
+
+                                console.log(data2.left_list.length);
+                                ll = data2.left_list.length;
+                                //console.log(ll)
+                                for (var l = 0; l < ll; l++) {
+                                    var data3 = data2.left_list[l];
+                                    var data4 = data2.right_list[l];
+
+                                html += '<tr class="db-collapse">'; // db-match
+                                html +=         '<td>';
+                                html +=             '<div class="match-time d-flex just-between">';
+                                html +=                 '<span>' + data2.time + '</span>';
+                                html +=             '</div>';
+                                html +=         '</td>';
+
+                                html +=         '<td>';
+                                html +=             '<div class="match-time d-flex just-between">';
+                                html +=                 '<span>' + data3[0] + ' <span style="padding-left:5px; color: #46a; padding-right:5px;">' + data3[1] + '</span> <b>(' + data3[2] + ')</b></span>';
+                                html +=             '</div>';
+                                html +=         '</td>';
+
+                                html +=         '<td>';
+                                html +=             '<div class="match-time d-flex just-between">';
+                                html +=                 '<span>' + data4[0] + ' <span style="padding-left:5px; color: #46a; padding-right:5px;">' + data4[1] + '</span> <b>(' + data4[2] + ')</b></span>';
+                                html +=             '</div>';
+                                html +=         '</td>';
+
+                                html +=         '<td class="row-span" colspan="2" >';
+                                html +=             '<div class="league-name">';
+                                    if (link) {
+                                    html +=             '<a href="{{ url('/ราคาบอลไหล?link=') }}'+ link +'" target="_BLANK">ดูราคา<br>บอลไหล</a>';
+                                    }
+                                html +=             '</div>';
+                                html +=         '</td>';
+                                html += '</tr>';
+
+                                }
+
+                                }
+
+
+
+
+                            }
+                            f++
                         }
                     }
+                    //console.log(arr)
+                    $('#tr_loading').remove();
+                    $('#tbody-ffp').append(html);
                 }
-
-                $('#tbody_ffp').html(html);
             }
         }
 

@@ -68,7 +68,7 @@ class ContentDetailController extends Controller
         } */
 
         $domain = request()->getHttpHost();
-        $mainDatas = array('final_list' => $finalList, 'latest_dir' => $dirName, 'domain' => $domain);
+        $mainDatas = array('raw_group' => $finalList, 'latest_dir' => $dirName, 'domain' => $domain);
         // 'raw_group' => $structureList,
 
 
