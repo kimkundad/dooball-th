@@ -42,7 +42,7 @@ class ContentDetailController extends Controller
     {
         $curDatas = $this->common->realCurrentContent();
         $dirName = $curDatas['dirName'];
-
+        dd($dirName);
         $finalList = array();
         $totalMatch = 0;
 
@@ -70,6 +70,8 @@ class ContentDetailController extends Controller
         $domain = request()->getHttpHost();
         $mainDatas = array('final_list' => $finalList, 'latest_dir' => $dirName, 'domain' => $domain);
         // 'raw_group' => $structureList,
+
+
 
         return response()->json($mainDatas);
     }
