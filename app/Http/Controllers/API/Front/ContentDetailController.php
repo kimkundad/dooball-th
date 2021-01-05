@@ -212,7 +212,7 @@ class ContentDetailController extends Controller
         $successList = array();
 
         $findDatas = ContentDetail::select(['link'])->where('id', $id);
-        dd($findDatas);
+      
         if ($findDatas->count() > 0) {
             $rows = $findDatas->get();
             $realLink = $rows[0]->link;
@@ -231,6 +231,7 @@ class ContentDetailController extends Controller
                 }
             }
         }
+        dd($successList);
 
         if (count($successList) > 0) {
 
