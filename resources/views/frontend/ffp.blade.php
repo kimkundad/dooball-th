@@ -271,7 +271,7 @@
                                 html +=         '<td class="row-span" colspan="2" >';
                                 html +=             '<div class="league-name">';
                                     if (link) {
-                                    html +=             '<a href="{{ url('/ราคาบอลไหล?link=') }}'+ data3.detail_id +'" target="_BLANK">ดูราคา<br>บอลไหล</a>';
+                                    html +=             '<a href="{{ url('/ราคาบอลไหล?link=') }}'+ data2.detail_id +'" target="_BLANK">ดูราคา<br>บอลไหล</a>';
                                     }
                                 html +=             '</div>';
                                 html +=         '</td>';
