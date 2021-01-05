@@ -1037,6 +1037,7 @@ class CommonController extends Controller
                     if ($innerContent->datas) {
                         $matches = array();
                         if (count($innerContent->datas) > 0) {
+                          dd($innerContent->datas);
                             foreach($innerContent->datas as $data) {
                                 if ($data) {
                                     $row = (array) $data;
@@ -1052,7 +1053,6 @@ class CommonController extends Controller
                                         if (array_key_exists('left', $row)) {
                                             $teamLeftName = $row['left'][0];
                                             $teamLeftRight = $row['left'][1];
-                                            dd($teamLeftName);
                                         }
                                         if (array_key_exists('mid', $row)) {
                                             $teamDrawText = $row['mid'][0];
