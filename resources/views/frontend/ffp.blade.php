@@ -57,18 +57,9 @@
                     <div class="col-12">
                         <div class="table-responsive">
                             <table class="table table-condensed text-white">
-                                <thead>
-                                    <tr class="card-prediction">
-                                        <th>เวลาแข่ง</th>
-                                        <th>ทีมเหย้า</th>
-                                        <th>ราคา@ค่าน้ำ</th>
-                                        <th class="not-mb">VS</th>
-                                        <th>ทีมเยือน</th>
-                                        <th>% ราคาไหล</th>
-                                        <th>ราคาบอลไหล</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody_ffp">
+
+
+                                <tbody id="tbody-ffp">
                                     <tr>
                                         <td colspan="7">
                                             <div class="table-loading">
