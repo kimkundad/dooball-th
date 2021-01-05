@@ -198,7 +198,7 @@ class ContentDetailController extends Controller
         $asianDatas = $this->common->graphLastArrange($graphDatas, 'asian');
         $overDatas = $this->common->graphLastArrange($graphDatas, 'over');
         $oneDatas = $this->common->graphLastArrange($graphDatas, 'one');
-
+        dd($graphDatas);
         $datas = array('asian' => $asianDatas,
                         'over' => $overDatas,
                         'one' => $oneDatas);
