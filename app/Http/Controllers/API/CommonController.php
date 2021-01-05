@@ -1061,7 +1061,7 @@ class CommonController extends Controller
                                             $teamRightName = $row->match_datas[0]->right[0];
                                             $teamRightRight = $row->match_datas[0]->right[1];
 
-                                             dd($row);
+
                                       //  }
                                       /*  if (array_key_exists('mid', $row)) {
                                             $teamDrawText = $row['mid'][0];
@@ -1079,9 +1079,12 @@ class CommonController extends Controller
                                         $teamLeftMid = null;
                                         $teamRightMid = null;
 
+
                                         $teamLeftName = $row->match_datas[0]->left[0];
                                         $teamLeftMid = $row->match_datas[0]->left[1];
                                         $teamLeftRight = $row->match_datas[0]->left[2];
+
+                                        dd($row);
 
                                         $teamRightName = $row->match_datas[0]->right[0];
                                         $teamRightMid = $row->match_datas[0]->right[1];
