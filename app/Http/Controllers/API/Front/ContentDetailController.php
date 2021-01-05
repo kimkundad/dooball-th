@@ -142,13 +142,13 @@ class ContentDetailController extends Controller
             $realLink = $rows[0]->link;
 
             // Storage::disk('local')->put('log.html', $realLink);
-            
+
             $dayList = ContentDetail::select('dir_name')->groupBy('dir_name')->orderBy('dir_name', 'asc');
             $totalInner = $dayList->count();
             if ($totalInner > 0) {
                 $dirList = $dayList->get();
                 foreach($dirList as $key => $dName) {
-                    $dlDatas = dirList::select('dir_name')->where('scraping_status', '1')->where('dir_name', $dName->dir_name);
+                    $dlDatas = dirList::select('dir_name')->where('scraping_status', '0')->where('dir_name', $dName->dir_name);
                     if ($dlDatas->count() > 0) {
                         $successList[] = $dName->dir_name;
                     }
@@ -215,7 +215,7 @@ class ContentDetailController extends Controller
         array_pop($expTd);
         // echo count($expTd);
         // debug($expTd);
-        
+
         // start team left data
         $teamLeft = (array_key_exists(0, $expTd)) ? $expTd[0] : '';
 
@@ -475,7 +475,7 @@ class ContentDetailController extends Controller
                 DB::table('ffp_list_temp')
                     ->where('dir_name', $latestDir)
                     ->update(array('content' => $finalList));
-    
+
                 $this->common->autoUpdateSitemap();
             }
         }
@@ -494,7 +494,7 @@ class ContentDetailController extends Controller
             }
         }
 
-        // 'ffp_detail.id', 
+        // 'ffp_detail.id',
         $findBlankQuery = DB::table('ffp_detail')->select('ffp_detail.content', DB::raw('CONCAT(ffp_detail.dir_name, "-", ffp_detail.file_name) as link_code'));
         $findBlankQuery->whereNotIn(DB::raw('CONCAT(ffp_detail.dir_name, "-", ffp_detail.file_name)'), $fileList);
         // $datas = $findBlankQuery->orderBy('ffp_detail.id', 'desc');
@@ -542,11 +542,11 @@ class ContentDetailController extends Controller
                                 $fileSave->away_team = $match['team_right'];
                                 $fileSave->away_mid_score = $match['score_right_mid'];
                                 $fileSave->away_water = $match['score_right_last'];
-        
+
                                 $saved = $fileSave->save();
-        
+
                                 // dd($match);
-        
+
                                 if ($fileSave->id) {
                                     // ...
                                 }
@@ -599,7 +599,7 @@ class ContentDetailController extends Controller
         $mainDatas = array();
 
         $dirName = '';
-        $latestDir = DirList::select(['content', 'dir_name'])->where('dir_name', 'like', $dirDate . '%')->where('scraping_status', '1')->where('except_this', '0')->where('content', '<>', '[]')->orderBy('dir_name', 'desc')->first();
+        $latestDir = DirList::select(['content', 'dir_name'])->where('dir_name', 'like', $dirDate . '%')->where('scraping_status', '0')->where('except_this', '0')->where('content', '<>', '[]')->orderBy('dir_name', 'desc')->first();
 
         if ($latestDir) {
             $dirName = $latestDir->dir_name;
