@@ -1084,11 +1084,13 @@ class CommonController extends Controller
                                         $teamLeftMid = $row->match_datas[0]->left[1];
                                         $teamLeftRight = $row->match_datas[0]->left[2];
 
-                                        dd($row);
+
 
                                         $teamRightName = $row->match_datas[0]->right[0];
                                         $teamRightMid = $row->match_datas[0]->right[1];
                                         $teamRightRight = $row->match_datas[0]->right[2];
+
+                                        dd($row);
 
                                       /*  if (array_key_exists('left', $row)) {
                                             $teamLeftName = $row['left'][0];
