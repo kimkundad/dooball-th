@@ -251,9 +251,9 @@ class ContentDetailController extends Controller
                 }
             }
         }
-        dd($graphDatas);
+      //  dd($graphDatas);
         // return array('prepare_data' => $graphDatas, 'content' => $htmlContent);
-        return $graphDatas;
+      //  return $graphDatas;
     }
 
     public function skudTopHead($content = '')

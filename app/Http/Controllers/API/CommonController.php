@@ -1030,7 +1030,7 @@ class CommonController extends Controller
 
         if (trim($htmlContent) && trim($htmlContent) != '-- no content --') {
             $tableDatas = json_decode($htmlContent);
-
+            dd($tableDatas);
             if (count($tableDatas) > 0) {
                 foreach($tableDatas as $innerContent) {
                     $topHead = $innerContent->top_head;
