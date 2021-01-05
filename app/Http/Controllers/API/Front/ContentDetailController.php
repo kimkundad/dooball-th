@@ -233,6 +233,7 @@ class ContentDetailController extends Controller
         }
 
         if (count($successList) > 0) {
+            dd($contentDatas);
             $contentDatas = ContentDetail::select(['content', 'dir_name'])->where('link', $realLink)->whereNotNull('content');
             $contentDatas->whereIn('dir_name', $successList);
             $contentDatas->orderBy('dir_name', 'asc');
