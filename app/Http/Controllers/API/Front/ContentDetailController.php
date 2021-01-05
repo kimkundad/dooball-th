@@ -59,6 +59,67 @@ class ContentDetailController extends Controller
                 }
             } */
         }
+        $contentList = $finalList;
+
+        if (count($contentList) > 0) {
+                foreach($contentList as $data) {
+
+                    $topHead = $data->top_head;
+                    $leagueList = $data->datas;
+
+                    $newLeagueList = array();
+
+                    if (count($leagueList) > 0) {
+                        foreach($leagueList as $league) {
+
+                            $lName = $league->league_name;
+                            $matchDatas = $league->match_datas;
+
+                            $leftTeamGroup = array();
+                            $matchList = array();
+
+                            if (count($matchDatas) > 0) {
+                                foreach($matchDatas as $match) {
+                                    $leftTeam = $match->left[0];
+                                    $rightTeam = $match->right[0];
+                                    $nameCheck = $leftTeam . '_' . $rightTeam;
+                                    if (! in_array($nameCheck, $leftTeamGroup)) {
+                                        $leftTeamGroup[] = $nameCheck;
+                                        $matchList[] = (array) $match;
+                                    }
+                                }
+
+                                foreach($matchList as $k => $match) {
+                                    $leftTeam = $match['left'][0];
+                                    $rightTeam = $match['right'][0];
+                                    $nameCheck = $leftTeam . '_' . $rightTeam;
+                                    foreach($matchDatas as $mData) {
+                                        $lTeam = $mData->left[0];
+                                        $rTeam = $mData->right[0];
+                                        $nCheck = $lTeam . '_' . $rTeam;
+                                        if ($nameCheck == $nCheck) {
+                                            $matchList[$k]['left_list'][] = $mData->left;
+                                            $matchList[$k]['right_list'][] = $mData->right;
+                                        }
+                                    }
+
+                                    $matchList[$k]['detail_id'] = $this->detailIdFromLink($match['link'], $dirName);
+                                }
+                            }
+
+                            $newLeagueList[] = array(
+                                'league_name' => $lName,
+                                'match_datas' => $matchList
+                            );
+                        }
+                    }
+
+                    $structureList[] = array('top_head' => $topHead, 'datas' => $newLeagueList);
+
+                }
+            }
+
+
         // --- end find current ffp in temp --- //
 
       /*  if ($totalMatch == 0) {
@@ -68,12 +129,25 @@ class ContentDetailController extends Controller
         } */
 
         $domain = request()->getHttpHost();
-        $mainDatas = array('raw_group' => $finalList, 'latest_dir' => $dirName, 'domain' => $domain);
+        $mainDatas = array('raw_group' => $structureList, 'latest_dir' => $dirName, 'domain' => $domain);
         // 'raw_group' => $structureList,
 
 
 
         return response()->json($mainDatas);
+    }
+
+    public function detailIdFromLink($link = '', $dirName = '')
+    {
+        $detailId = '';
+        $dtDatas = ContentDetail::select('id')->where('link', $link)->where('dir_name', $dirName);
+
+        if ($dtDatas->count() > 0) {
+            $rows = $dtDatas->get();
+            $detailId = $rows[0]->id;
+        }
+
+        return $detailId;
     }
 
     public function groupMatchlList($matchlList = array(), $dirName = '', $successList = array())
