@@ -1049,9 +1049,9 @@ class CommonController extends Controller
                                     if ($topHead == '1X2') {
                                         $teamDrawText = 'Draw';
                                         $teamDrawScore = null;
-
+                                        dd($row);
                                         if (array_key_exists('left', $row)) {
-                                            dd($row);
+
                                             $teamLeftName = $row['left'][0];
                                             $teamLeftRight = $row['left'][1];
                                         }
