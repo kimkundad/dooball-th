@@ -49,23 +49,23 @@ class ContentDetailController extends Controller
         if ($dirName) {
             // --- start find current ffp in temp --- //
             $latestDir = DB::table('ffp_list')->select(['content'])->where('dir_name', $dirName)->whereNotNull('content')->first();
-
-            if ($latestDir) {
+            $finalList = json_decode($latestDir->content);
+          /*  if ($latestDir) {
                 $finalList = json_decode($latestDir->content);
                 if (count($finalList) > 0) {
                     foreach($finalList as $league) {
                         $totalMatch += count($league->match_datas);
                     }
                 }
-            }
+            } */
         }
         // --- end find current ffp in temp --- //
 
-        if ($totalMatch == 0) {
+      /*  if ($totalMatch == 0) {
             $realFinalList = $this->common->recursiveActiveDir();
             $finalList = $realFinalList['final_list'];
             $dirName = $realFinalList['dir_name'];
-        }
+        } */
 
         $domain = request()->getHttpHost();
         $mainDatas = array('final_list' => $finalList, 'latest_dir' => $dirName, 'domain' => $domain);
