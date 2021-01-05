@@ -1050,11 +1050,12 @@ class CommonController extends Controller
                                         $teamDrawText = 'Draw';
                                         $teamDrawScore = null;
                                         dd($row);
-                                        if (array_key_exists('left', $row)) {
+                                      //  if (array_key_exists('left', $row)) {
 
                                             $teamLeftName = $row['left'][0];
                                             $teamLeftRight = $row['left'][1];
-                                        }
+                                            dd($teamLeftRight);
+                                      //  }
                                         if (array_key_exists('mid', $row)) {
                                             $teamDrawText = $row['mid'][0];
                                             $teamDrawScore = $row['mid'][1];
