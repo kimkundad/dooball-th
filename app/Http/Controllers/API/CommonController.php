@@ -1174,7 +1174,7 @@ class CommonController extends Controller
             $onePlusTwo = array('date_time' => $currentDir,
                                     'matches' => array());
         }
-        dd($row);
+      //  dd($row);
         return array('asian' => $asianHandicap, 'over' => $overUnder, 'one' => $onePlusTwo);
     }
 
