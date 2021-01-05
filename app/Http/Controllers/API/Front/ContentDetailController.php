@@ -194,7 +194,7 @@ class ContentDetailController extends Controller
     public function dataToGraphWithDetailId($detailId = 0)
     {
         $graphDatas = $this->prepareDataToPlotGraph($detailId);
-
+        dd($graphDatas);
         $asianDatas = $this->common->graphLastArrange($graphDatas, 'asian');
         $overDatas = $this->common->graphLastArrange($graphDatas, 'over');
         $oneDatas = $this->common->graphLastArrange($graphDatas, 'one');
@@ -233,7 +233,7 @@ class ContentDetailController extends Controller
         }
 
         if (count($successList) > 0) {
-            dd($contentDatas);
+
             $contentDatas = ContentDetail::select(['content', 'dir_name'])->where('link', $realLink)->whereNotNull('content');
             $contentDatas->whereIn('dir_name', $successList);
             $contentDatas->orderBy('dir_name', 'asc');
