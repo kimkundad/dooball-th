@@ -1051,7 +1051,7 @@ class CommonController extends Controller
                                         $teamDrawScore = null;
                                       //  dd($row);
                                       //  if (array_key_exists('left', $row)) {
-                                            dd($row[0]->match_datas);
+                                            dd($row->match_datas[0]);
                                             $teamLeftName = $row['left'][0];
                                             $teamLeftRight = $row['left'][1];
 
