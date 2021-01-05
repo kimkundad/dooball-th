@@ -60,14 +60,8 @@
 
 
                                 <tbody id="tbody-ffp">
-                                    <tr>
-                                        <td colspan="7">
-                                            <div class="table-loading">
-                                                <div class="l-one"></div>
-                                                <div class="l-two"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
+
+
                                 </tbody>
                             </table>
                         </div>
