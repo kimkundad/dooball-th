@@ -195,10 +195,11 @@ class ContentDetailController extends Controller
     {
         $graphDatas = $this->prepareDataToPlotGraph($detailId);
         //dd($graphDatas); 210106003031
+        dd($graphDatas);
         $asianDatas = $this->common->graphLastArrange($graphDatas, 'asian');
         $overDatas = $this->common->graphLastArrange($graphDatas, 'over');
         $oneDatas = $this->common->graphLastArrange($graphDatas, 'one');
-      //  dd($graphDatas);
+
         $datas = array('asian' => $asianDatas,
                         'over' => $overDatas,
                         'one' => $oneDatas);
@@ -251,9 +252,9 @@ class ContentDetailController extends Controller
                 }
             }
         }
-        dd($graphDatas);
+      //  dd($graphDatas);
         // return array('prepare_data' => $graphDatas, 'content' => $htmlContent);
-      //  return $graphDatas;
+        return $graphDatas;
     }
 
     public function skudTopHead($content = '')
