@@ -337,7 +337,7 @@ class CommonController extends Controller
 
 		return $left;
 	}
-    
+
     public function paddNum($num = '')
     {
         return ((int) $num < 10) ? '0' . ((int) $num) : $num;
@@ -393,7 +393,7 @@ class CommonController extends Controller
         }
 
         $dateTime = Date('Y-m-d');
-    
+
         if ($monthDayText) {
             $monthTextList = explode(' ', $monthDayText);
             $monthText = $monthTextList[0];
@@ -411,7 +411,7 @@ class CommonController extends Controller
                 $newTime = $newDate . $separate . Date('H:i', $timestamp);
             }
         }
-    
+
         // --- end time -1 hr --- //
 
         return $newTime;
@@ -451,7 +451,7 @@ class CommonController extends Controller
             $uniqueLeagueList = $resultList['unique'];
             $structureList = $resultList['structure'];
             $totalMatch = $resultList['total_match'];
-        
+
             $finalList = $this->finalListStructure($uniqueLeagueList, $structureList, $successList);
         }
         // --- end find final list --- //
@@ -498,7 +498,7 @@ class CommonController extends Controller
             $uniqueLeagueList = $resultList['unique'];
             $structureList = $resultList['structure'];
             $totalMatch = $resultList['total_match'];
-        
+
             $finalList = $this->finalListStructure($uniqueLeagueList, $structureList, $successList);
         }
         // --- end find final list --- //
@@ -509,7 +509,7 @@ class CommonController extends Controller
     public function scanExceptDir()
     {
         $exceptList = DirList::where('except_this', 1)->where('content', '<>', '[]');
-        
+
         $this->logAsFile->logAsFile('except-this.html', 'Start at: ' . Date('Y-m-d H:i:s'));
 
         if ($exceptList->count() > 0) {
@@ -519,10 +519,10 @@ class CommonController extends Controller
                 $dirName = $dir->dir_name;
                 $latestContent = $dir->content;
                 $contentList = json_decode($latestContent);
-    
+
                 $resultList = $this->rawLeagueList($contentList, $dirName);
                 $totalMatch = $resultList['total_match'];
-    
+
                 $this->logAsFile->logAsFile('except-this.html', '<br>' . $dirName . ' : Total match: ' . $totalMatch, 'append');
 
                 if ($totalMatch > 0) {
@@ -538,7 +538,7 @@ class CommonController extends Controller
         $dirName = '';
         $latestContent = '';
 
-        $latestDir = DirList::select(['dir_name', 'content'])->where('scraping_status', '1')->where('except_this', '0')->where('content', '<>', '[]');
+        $latestDir = DirList::select(['dir_name', 'content'])->where('scraping_status', '0')->where('except_this', '0')->where('content', '<>', '[]');
         $latestDir->orderBy('dir_name', 'desc');
 
         if ($latestDir->count() > 0) {
@@ -560,7 +560,7 @@ class CommonController extends Controller
         $dirName = '';
         $latestContent = '';
 
-        $latestDir = DirList::select(['dir_name', 'content'])->where('scraping_status', '1')->where('except_this', '0')->where('content', '<>', '[]');
+        $latestDir = DirList::select(['dir_name', 'content'])->where('scraping_status', '0')->where('except_this', '0')->where('content', '<>', '[]');
         $latestDir->whereBetween('created_at', [$dateFrom, $dateTo]);
         $latestDir->orderBy('dir_name', 'desc');
 
@@ -603,7 +603,7 @@ class CommonController extends Controller
         if ($dayList->count() > 0) {
             $dirList = $dayList->get();
             foreach($dirList as $key => $dName) {
-                $dlDatas = dirList::select('dir_name')->where('scraping_status', '1')->where('dir_name', $dName->dir_name);
+                $dlDatas = dirList::select('dir_name')->where('scraping_status', '0')->where('dir_name', $dName->dir_name);
 
                 if ($dlDatas->count() > 0) {
                     $successList[] = $dName->dir_name;
@@ -625,29 +625,29 @@ class CommonController extends Controller
                 foreach($contentList as $data) {
                     $topHead = $data->top_head;
                     $leagueList = $data->datas;
-    
+
                     $newLeagueList = array();
-    
+
                     if (count($leagueList) > 0) {
                         foreach($leagueList as $league) {
                             $lName = $league->league_name;
-    
+
                             if (! in_array($lName, $uniqueLeagueList)) {
                                 $uniqueLeagueList[] = $lName;
                             }
-    
+
                             $matchDatas = $league->match_datas;
-    
+
                             $leftTeamGroup = array();
                             $matchList = array();
-    
+
                             if (count($matchDatas) > 0) {
                                 foreach($matchDatas as $match) {
                                     $findDetail = ContentDetail::select('content')->where('link', $match->link)->where('dir_name', $dirName)->first();
-    
+
                                     if ($findDetail) {
                                         $content = $findDetail->content;
-    
+
                                         if (trim($content) && trim($content) != '-- no content --') {
                                             $leftTeam = $match->left[0];
                                             $rightTeam = $match->right[0];
@@ -657,10 +657,10 @@ class CommonController extends Controller
                                                 $matchList[] = (array) $match;
                                             }
                                         }
-        
+
                                     }
                                 }
-    
+
                                 foreach($matchList as $k => $match) {
                                     $leftTeam = $match['left'][0];
                                     $rightTeam = $match['right'][0];
@@ -674,19 +674,19 @@ class CommonController extends Controller
                                             $matchList[$k]['right_list'][] = $mData->right;
                                         }
                                     }
-    
+
                                     $matchList[$k]['detail_id'] = $this->detailIdFromLink($match['link'], $dirName);
                                     $totalMatch++;
                                 }
                             }
-    
+
                             $newLeagueList[] = array(
                                 'league_name' => $lName,
                                 'match_datas' => $matchList
                             );
                         }
                     }
-    
+
                     $structureList[] = array('top_head' => $topHead, 'datas' => $newLeagueList);
                 }
             }
@@ -719,18 +719,18 @@ class CommonController extends Controller
                             if (! in_array($lName, $uniqueLeagueList)) {
                                 $uniqueLeagueList[] = $lName;
                             }
-    
+
                             $matchDatas = $league->match_datas;
-    
+
                             $leftTeamGroup = array();
                             $matchList = array();
                             if (count($matchDatas) > 0) {
                                 foreach($matchDatas as $match) {
                                     $findDetail = ContentDetail::select('content')->where('link', $match->link)->where('dir_name', $dirName)->first();
-    
+
                                     if ($findDetail) {
                                         $content = $findDetail->content;
-    
+
                                         if (trim($content) && trim($content) != '-- no content --') {
                                             $leftTeam = $match->left[0];
                                             $rightTeam = $match->right[0];
@@ -740,10 +740,10 @@ class CommonController extends Controller
                                                 $matchList[] = (array) $match;
                                             }
                                         }
-        
+
                                     }
                                 }
-    
+
                                 foreach($matchList as $k => $match) {
                                     $leftTeam = $match['left'][0];
                                     $rightTeam = $match['right'][0];
@@ -757,7 +757,7 @@ class CommonController extends Controller
                                             $matchList[$k]['right_list'][] = $mData->right;
                                         }
                                     }
-    
+
                                     $matchList[$k]['detail_id'] = $this->detailIdFromLink($match['link'], $dirName);
                                     $scoreDatas = $this->scoreFromLink($match['link'], $successList);
                                     $matchList[$k]['score'] = $scoreDatas['asian']['score'];
@@ -769,7 +769,7 @@ class CommonController extends Controller
 
                             if ($teamSearch && (count($matchList) > 0)) {
                                 $this->logAsFile->logAsFile('debug-ffp-team.html', '<br>Yes in if', 'append');
-    
+
                                 $teamMatchList = array();
 
                                 foreach($matchList as $finalM) {
@@ -843,7 +843,7 @@ class CommonController extends Controller
                 }
 
                 $newMatchList = array();
-                
+
                 // Storage::put('file.html', '');
 
                 if (count($chkNameList) > 0 && count($matchList) > 0) {
@@ -989,7 +989,7 @@ class CommonController extends Controller
                 foreach($teamSeries as $k => $team) {
                     $datas = $team['data'];
                     $zeroNum = $datas[0];
-    
+
                     if ($zeroNum < $asianWater && $zeroNum != null && $zeroNum != 'null') {
                         $asianWater = $zeroNum;
                         $keyFound = $k;
@@ -1030,7 +1030,7 @@ class CommonController extends Controller
 
         if (trim($htmlContent) && trim($htmlContent) != '-- no content --') {
             $tableDatas = json_decode($htmlContent);
-    
+
             if (count($tableDatas) > 0) {
                 foreach($tableDatas as $innerContent) {
                     $topHead = $innerContent->top_head;
@@ -1061,7 +1061,7 @@ class CommonController extends Controller
                                             $teamRightName = $row['right'][0];
                                             $teamRightRight = $row['right'][1];
                                         }
-                                        
+
                                         $matches[] = array('team_name' => $teamLeftName, 'score' => 0, 'water' => (float) $teamLeftRight);
                                         $matches[] = array('team_name' => $teamDrawText, 'score' => 0, 'water' => (float) $teamDrawScore);
                                         $matches[] = array('team_name' => $teamRightName, 'score' => 0, 'water' => (float) $teamRightRight);
@@ -1800,7 +1800,7 @@ class CommonController extends Controller
         $date = Date('Y-m-d');
         $time = Date('H:i:s');
         $lastMod = $date . 'T' . $time . '+07:00';
-    
+
         $sitemapList[] = array('loc' => 'https://dooball-th.com', 'lastmod' => $lastMod, 'priority' => '1.00', 'changefreq' => 'Daily');
         $sitemapList[] = array('loc' => 'https://dooball-th.com/game', 'lastmod' => $lastMod, 'priority' => '1.00', 'changefreq' => 'Daily');
         $sitemapList[] = array('loc' => 'https://dooball-th.com/ราคาบอล', 'lastmod' => $lastMod, 'priority' => '1.00', 'changefreq' => 'Daily');
@@ -1854,7 +1854,7 @@ class CommonController extends Controller
             foreach ($ffpList as $list) {
                 $content = $list->content;
                 $leagueList = json_decode($content);
-                
+
                 if (count($leagueList) > 0) {
                     foreach($leagueList as $league) {
                         if (count($league->match_datas) > 0) {
@@ -1898,7 +1898,7 @@ class CommonController extends Controller
                 $sitemap .= '<url>';
                 $sitemap .=     '<loc>' . $site['loc'] . '</loc>';
                 $sitemap .=     '<lastmod>' . $site['lastmod'] . '</lastmod>';
-                
+
                 if (array_key_exists('priority', $site)) {
                     $sitemap .=     '<priority>' . $site['priority'] . '</priority>';
                 }
@@ -1941,7 +1941,7 @@ class CommonController extends Controller
     public static function listFileInDirectory($filePath = '')
     {
         $ary_files = self::listAllFile($filePath);
-        
+
         $ary_files = array_combine(
             $ary_files,
             array_map( "filemtime", $ary_files )
