@@ -198,7 +198,7 @@ class ContentDetailController extends Controller
         $asianDatas = $this->common->graphLastArrange($graphDatas, 'asian');
         $overDatas = $this->common->graphLastArrange($graphDatas, 'over');
         $oneDatas = $this->common->graphLastArrange($graphDatas, 'one');
-        dd($graphDatas);
+      //  dd($graphDatas);
         $datas = array('asian' => $asianDatas,
                         'over' => $overDatas,
                         'one' => $oneDatas);
@@ -251,7 +251,7 @@ class ContentDetailController extends Controller
                 }
             }
         }
-      //  dd($graphDatas);
+        dd($graphDatas);
         // return array('prepare_data' => $graphDatas, 'content' => $htmlContent);
       //  return $graphDatas;
     }
