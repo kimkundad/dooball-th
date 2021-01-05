@@ -48,7 +48,7 @@ class ContentDetailController extends Controller
 
         if ($dirName) {
             // --- start find current ffp in temp --- //
-            $latestDir = DB::table('ffp_list_temp')->select(['content'])->where('dir_name', $dirName)->whereNotNull('content')->first();
+            $latestDir = DB::table('ffp_list')->select(['content'])->where('dir_name', $dirName)->whereNotNull('content')->first();
 
             if ($latestDir) {
                 $finalList = json_decode($latestDir->content);
