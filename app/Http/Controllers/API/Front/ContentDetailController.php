@@ -238,7 +238,7 @@ class ContentDetailController extends Controller
             $contentDatas = ContentDetail::select(['content', 'dir_name'])->where('link', $realLink)->whereNotNull('content');
             $contentDatas->whereIn('dir_name', $successList);
             $contentDatas->orderBy('dir_name', 'asc');
-            dd($contentDatas);
+            //dd($contentDatas);
             // $message = 'dir_name: ' . $day->dir_name . ', Total: ' . $contentDatas->count();
             // Log::info($message);
 
@@ -251,7 +251,7 @@ class ContentDetailController extends Controller
                 }
             }
         }
-
+        dd($graphDatas);
         // return array('prepare_data' => $graphDatas, 'content' => $htmlContent);
         return $graphDatas;
     }
