@@ -212,7 +212,7 @@ class ContentDetailController extends Controller
         $successList = array();
 
         $findDatas = ContentDetail::select(['link'])->where('id', $id);
-      
+
         if ($findDatas->count() > 0) {
             $rows = $findDatas->get();
             $realLink = $rows[0]->link;
@@ -231,14 +231,14 @@ class ContentDetailController extends Controller
                 }
             }
         }
-        dd($successList);
+
 
         if (count($successList) > 0) {
 
             $contentDatas = ContentDetail::select(['content', 'dir_name'])->where('link', $realLink)->whereNotNull('content');
             $contentDatas->whereIn('dir_name', $successList);
             $contentDatas->orderBy('dir_name', 'asc');
-
+            dd($contentDatas);
             // $message = 'dir_name: ' . $day->dir_name . ', Total: ' . $contentDatas->count();
             // Log::info($message);
 
