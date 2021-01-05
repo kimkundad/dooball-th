@@ -1051,19 +1051,25 @@ class CommonController extends Controller
                                         $teamDrawScore = null;
                                       //  dd($row);
                                       //  if (array_key_exists('left', $row)) {
-                                            dd($row->match_datas[0]->left[0]);
-                                            $teamLeftName = $row['left'][0];
-                                            $teamLeftRight = $row['left'][1];
+                                          //  dd($row->match_datas[0]->left[0]);
+                                            $teamLeftName = $row->match_datas[0]->left[0];
+                                            $teamLeftRight = $row->match_datas[0]->left[1];
+
+                                            $teamDrawText = $row->match_datas[0]->mid[0];
+                                            $teamDrawScore = $row->match_datas[0]->mid[1];
+
+                                            $teamRightName = $row->match_datas[0]->right[0];
+                                            $teamRightRight = $row->match_datas[0]->right[1];
 
                                       //  }
-                                        if (array_key_exists('mid', $row)) {
+                                      /*  if (array_key_exists('mid', $row)) {
                                             $teamDrawText = $row['mid'][0];
                                             $teamDrawScore = $row['mid'][1];
                                         }
                                         if (array_key_exists('right', $row)) {
                                             $teamRightName = $row['right'][0];
                                             $teamRightRight = $row['right'][1];
-                                        }
+                                        } */
 
                                         $matches[] = array('team_name' => $teamLeftName, 'score' => 0, 'water' => (float) $teamLeftRight);
                                         $matches[] = array('team_name' => $teamDrawText, 'score' => 0, 'water' => (float) $teamDrawScore);
@@ -1072,7 +1078,15 @@ class CommonController extends Controller
                                         $teamLeftMid = null;
                                         $teamRightMid = null;
 
-                                        if (array_key_exists('left', $row)) {
+                                        $teamLeftName = $row->match_datas[0]->left[0];
+                                        $teamLeftMid = $row->match_datas[0]->left[1];
+                                        $teamLeftRight = $row->match_datas[0]->left[2];
+
+                                        $teamRightName = $row->match_datas[0]->right[0];
+                                        $teamRightMid = $row->match_datas[0]->right[1];
+                                        $teamRightRight = $row->match_datas[0]->right[2];
+
+                                      /*  if (array_key_exists('left', $row)) {
                                             $teamLeftName = $row['left'][0];
                                             $teamLeftMid = $row['left'][1];
                                             $teamLeftRight = $row['left'][2];
@@ -1082,7 +1096,7 @@ class CommonController extends Controller
                                             $teamRightName = $row['right'][0];
                                             $teamRightMid = $row['right'][1];
                                             $teamRightRight = $row['right'][2];
-                                        }
+                                        } */
 
                                         $teamName = '';
                                         $score = 0.00;
