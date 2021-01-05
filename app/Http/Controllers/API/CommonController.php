@@ -1030,7 +1030,7 @@ class CommonController extends Controller
 
         if (trim($htmlContent) && trim($htmlContent) != '-- no content --') {
             $tableDatas = json_decode($htmlContent);
-            dd($tableDatas);
+          //  dd($tableDatas);
             if (count($tableDatas) > 0) {
                 foreach($tableDatas as $innerContent) {
                     $topHead = $innerContent->top_head;
@@ -1052,6 +1052,7 @@ class CommonController extends Controller
                                         if (array_key_exists('left', $row)) {
                                             $teamLeftName = $row['left'][0];
                                             $teamLeftRight = $row['left'][1];
+                                            dd($teamLeftName);
                                         }
                                         if (array_key_exists('mid', $row)) {
                                             $teamDrawText = $row['mid'][0];
