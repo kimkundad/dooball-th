@@ -1090,7 +1090,7 @@ class CommonController extends Controller
                                         $teamRightMid = $row->match_datas[0]->right[1];
                                         $teamRightRight = $row->match_datas[0]->right[2];
 
-                                        dd($row);
+                                      //  dd($row);
 
                                       /*  if (array_key_exists('left', $row)) {
                                             $teamLeftName = $row['left'][0];
@@ -1135,7 +1135,7 @@ class CommonController extends Controller
                                                 $water = (float) $teamRightRight;
                                             }
                                         }
-
+                                        dd($row);
                                         $matches[] = array('team_name' => $teamName, 'score' => $score, 'water' => $water);
                                     }
                                 }
