@@ -1049,11 +1049,10 @@ class CommonController extends Controller
                                     if ($topHead == '1X2') {
                                         $teamDrawText = 'Draw';
                                         $teamDrawScore = null;
-                                    //    dd($row);
+                                      //  dd($row);
                                       //  if (array_key_exists('left', $row)) {
-
-                                            $teamLeftName = $row['match_datas']['left'][0];
-                                            dd($teamLeftName);
+                                            dd($row->match_datas[0]->left);
+                                            $teamLeftName = $row['left'][0];
                                             $teamLeftRight = $row['left'][1];
 
                                       //  }
