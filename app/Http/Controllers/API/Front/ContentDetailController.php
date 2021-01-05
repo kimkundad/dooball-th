@@ -195,8 +195,9 @@ class ContentDetailController extends Controller
     {
         $graphDatas = $this->prepareDataToPlotGraph($detailId);
         //dd($graphDatas); 210106003031
-        dd($graphDatas);
+
         $asianDatas = $this->common->graphLastArrange($graphDatas, 'asian');
+        dd($asianDatas);
         $overDatas = $this->common->graphLastArrange($graphDatas, 'over');
         $oneDatas = $this->common->graphLastArrange($graphDatas, 'one');
 
