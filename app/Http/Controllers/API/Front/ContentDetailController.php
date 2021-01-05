@@ -42,7 +42,7 @@ class ContentDetailController extends Controller
     {
         $curDatas = $this->common->realCurrentContent();
         $dirName = $curDatas['dirName'];
-        dd($dirName);
+        //dd($dirName);
         $finalList = array();
         $totalMatch = 0;
 
