@@ -1040,7 +1040,7 @@ class CommonController extends Controller
 
                             foreach($innerContent->datas as $data) {
                                 if ($data) {
-                                    $row = (array) $data;
+                                    $row = $data;
                                     $teamLeftName = '';
                                     $teamLeftRight = null;
                                     $teamRightName = '';
