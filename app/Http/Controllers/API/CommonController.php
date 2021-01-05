@@ -1061,6 +1061,7 @@ class CommonController extends Controller
                                             $teamRightName = $row->match_datas[0]->right[0];
                                             $teamRightRight = $row->match_datas[0]->right[1];
 
+                                             dd($row);
                                       //  }
                                       /*  if (array_key_exists('mid', $row)) {
                                             $teamDrawText = $row['mid'][0];
