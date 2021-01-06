@@ -226,7 +226,7 @@ class ContentDetailController extends Controller
             if ($totalInner > 0) {
                 $dirList = $dayList->get();
                 foreach($dirList as $key => $dName) {
-                    $dlDatas = dirList::select('dir_name')->where('scraping_status', '0')->where('dir_name', $dName->dir_name);
+                    $dlDatas = dirList::select('dir_name')->where('scraping_status', '1')->where('dir_name', $dName->dir_name);
                     if ($dlDatas->count() > 0) {
                         $successList[] = $dName->dir_name;
                     }
