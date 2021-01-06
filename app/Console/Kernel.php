@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('dooball:sync-match')->everyTenMinutes();
         //$schedule->command('dooball:sync-db')->everyMinute();
         // $schedule->command('dooball:arrange-ffp-main')->everyFiveMinutes();
-        //$schedule->command('dooball:delete-ffp-db')->everyTenMinutes();
+        $schedule->command('dooball:delete-ffp-db')->everyTenMinutes();
         // $schedule->command('dooball:delete-ffp-log')->everyTenMinutes();
         // $schedule->command('inspire')->hourly();
     }
